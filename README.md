@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 # QM-WMS
-=======
-# iView-project
 ### 推荐直接使用 iView-cli
 [iView-cli](https://github.com/iview/iview-cli)
 > 源自[https://github.com/icarusion/vue-vueRouter-webpack](https://github.com/icarusion/vue-vueRouter-webpack)
@@ -31,4 +28,3 @@ npm run build
 ```
 ### 访问
 在浏览器地址栏输入[http://127.0.0.1:8080](http://127.0.0.1:8080)
->>>>>>> 4299aad78d0e0dd2072f53edf827a9d6b7421cc0
