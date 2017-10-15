@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<!-- <style scoped lang="less">
-=======
 <style scoped lang="less">
->>>>>>> 4299aad78d0e0dd2072f53edf827a9d6b7421cc0
     .index{
         width: 100%;
         position: absolute;
@@ -18,7 +14,6 @@
         }
         h2{
             color: #666;
-<<<<<<< HEAD
             margin-bottom: 200px;
             p{
                 margin: 0 0 50px;
@@ -52,28 +47,5 @@
         //             content: 'Now, enjoy the convenience of iView.'
         //         });
         // }
-=======
-        }
-        .ivu-row{
-            height: 100%;
-        }
-    }
-</style>
-<template>
-    <div class="index">
-        <Row type="flex" justify="center" align="middle">
-            <i-col span="24">
-                <h1>
-                    <img src="../images/logo.png">
-                </h1>
-                <h2>一套基于 Vue.js 的高质量UI组件库</h2>
-            </i-col>
-        </Row>
-    </div>
-</template>
-<script>
-    export default {
-
->>>>>>> 4299aad78d0e0dd2072f53edf827a9d6b7421cc0
     }
 </script>

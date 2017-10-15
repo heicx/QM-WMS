@@ -88,7 +88,7 @@
                         <template slot="title">
                             <Icon type="ios-world"></Icon>
                             网站管理
-                        </template> 
+                        </template>
                         <MenuItem name="4-1">新闻编辑</MenuItem>
                         <MenuItem name="4-2">视频编辑</MenuItem>
                         <MenuItem name="4-3">用户评价</MenuItem>
