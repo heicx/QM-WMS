@@ -59,7 +59,7 @@
 <template>
     <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
         <Row type="flex" class='row-content'>
-            <Col :span="spanLeft" class="layout-menu-left">
+            <Col :span="spanLeft" class="layout-menu-left" span='5'>
                 <Menu active-name="1" theme="dark" width="auto">
                     <div class="layout-logo-left"></div>
                     <Submenu name="1">
@@ -96,19 +96,17 @@
                 </Menu>
             </Col>
             <Col :span="spanRight">
-                <div class="layout-header">
-                    <!-- <Button type="text" @click="toggleClick">
-                        <Icon type="navicon" size="32"></Icon>
-                    </Button> -->
+              <div class="layout-content">
+                <div class="layout-content-main" style="background:#eee;">
+                  <Card shadow>
+                    <p slot="title">{{$route.meta.title}}</p>
+                    <router-view></router-view>
+                  </Card>
                 </div>
-                <div class="layout-content">
-                    <div class="layout-content-main">
-                        <router-view></router-view>
-                    </div>
-                </div>
-                <div class="layout-copy">
-                    2011-2017 &copy; QMY
-                </div>
+              </div>
+              <div class="layout-copy">
+                  2011-2017 &copy; QMY
+              </div>
             </Col>
         </Row>
     </div>
