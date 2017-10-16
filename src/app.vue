@@ -76,6 +76,7 @@
                             订单管理
                         </template>
                         <MenuItem name="2-1">订单查询</MenuItem>
+                        <MenuItem name="2-2">订单导出</MenuItem>
                     </Submenu>
                     <Submenu name="3">
                         <template slot="title">

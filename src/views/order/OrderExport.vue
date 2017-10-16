@@ -1,14 +1,21 @@
 <style scoped lang="less">
-.index-wrap {
-  min-height: 650px;
-  text-align: center;
-}
+
 </style>
 <template>
     <div class="index">
-      <Row type="flex" justify="center" align='middle' class="index-wrap">
-        <Col span="24">欢迎</Col>
-      </Row>
+      <Form :model="orderForm" :label-width="80" label-position="left">
+        <FormItem label='订单号'>
+          <Row type="flex" justify="start" align="middle" :gutter="16">
+            <Col span="6">
+              <Input v-model="orderForm.value" placeholder="请输入订单号"></Input>
+            </Col>
+            <Col span="6">
+              <Button type="primary" icon="ios-search">搜索</Button>
+            </Col>
+          </Row>
+        </FormItem>
+      </Form>
+      <Table border :columns="orderColumns" :data="orderData"></Table>
     </div>
 </template>
 <script>
