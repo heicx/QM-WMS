@@ -16,7 +16,6 @@
     .layout-content{
         min-height: 200px;
         margin: 15px;
-        overflow: hidden;
         background: #fff;
         border-radius: 4px;
     }
@@ -59,40 +58,56 @@
 <template>
     <div class="layout" :class="{'layout-hide-text': spanLeft < 5}">
         <Row type="flex" class='row-content'>
-            <Col :span="spanLeft" class="layout-menu-left" span='5'>
+            <Col :span="spanLeft" class="layout-menu-left">
                 <Menu active-name="1" theme="dark" width="auto">
                     <div class="layout-logo-left"></div>
                     <Submenu name="1">
                         <template slot="title">
                             <Icon type="ios-person"></Icon>
-                            用户管理
+                            账户管理
                         </template>
-                        <MenuItem name="1-1">创建账户</MenuItem>
-                        <MenuItem name="1-2">修改账户</MenuItem>
+                        <MenuItem name="1-1">
+                            <router-link to="/account/create" tag="div">创建账户</router-link>
+                        </MenuItem>
+                        <MenuItem name="1-2">
+                            <router-link to="/account/update" tag="div">修改密码</router-link>
+                        </MenuItem>
                     </Submenu>
                     <Submenu name="2">
                         <template slot="title">
                             <Icon type="clipboard"></Icon>
                             订单管理
                         </template>
-                        <MenuItem name="2-1">订单查询</MenuItem>
-                        <MenuItem name="2-2">订单导出</MenuItem>
+                        <MenuItem name="2-1">
+                            <router-link to="/order/search" tag="div">订单查询</router-link>
+                        </MenuItem>
+                        <MenuItem name="2-2">
+                            <router-link to="/order/export" tag="div">订单导出</router-link>
+                        </MenuItem>
                     </Submenu>
                     <Submenu name="3">
                         <template slot="title">
                             <Icon type="ios-people"></Icon>
                             用户管理
                         </template>
-                        <MenuItem name="3-1">用户查询</MenuItem>
+                        <MenuItem name="3-1">
+                            <router-link to="/user/search" tag="div">用户查询</router-link>
+                        </MenuItem>
                     </Submenu>
                     <Submenu name="4">
                         <template slot="title">
                             <Icon type="ios-world"></Icon>
                             网站管理
                         </template>
-                        <MenuItem name="4-1">新闻编辑</MenuItem>
-                        <MenuItem name="4-2">视频编辑</MenuItem>
-                        <MenuItem name="4-3">用户评价</MenuItem>
+                        <MenuItem name="4-1">
+                            <router-link to="/web/news" tag="div">新闻编辑</router-link>
+                        </MenuItem>
+                        <MenuItem name="4-2">
+                            <router-link to="/web/video" tag="div">视频编辑</router-link>
+                        </MenuItem>
+                        <MenuItem name="4-3">
+                            <router-link to="/web/comment" tag="div">用户评价</router-link>
+                        </MenuItem>
                     </Submenu>
                 </Menu>
             </Col>
@@ -116,8 +131,8 @@
     export default {
         data () {
             return {
-                spanLeft: 5,
-                spanRight: 19
+                spanLeft: 3,
+                spanRight: 21
             }
         },
         computed: {

@@ -3,27 +3,53 @@
 </style>
 <template>
     <div class="index">
-      <Form :model="orderForm" :label-width="80" label-position="left">
+      <Form :model="orderForm" label-position='right' :label-width='60' inline>
         <FormItem label='订单号'>
-          <Row type="flex" justify="start" align="middle" :gutter="16">
-            <Col span="6">
-              <Input v-model="orderForm.value" placeholder="请输入订单号"></Input>
-            </Col>
-            <Col span="6">
-              <Button type="primary" icon="ios-search">搜索</Button>
-            </Col>
-          </Row>
+          <Input v-model="orderForm.orderId" placeholder="请输入订单号"></Input>
+        </FormItem>
+        <FormItem label='开始时间'>
+          <DatePicker v-model="orderForm.beginTime" type="date" placeholder="订单开始时间"></DatePicker>
+        </FormItem>
+        <FormItem label='结束时间'>
+          <DatePicker v-model="orderForm.endTime" type="date" placeholder="订单结束时间"></DatePicker>
+        </FormItem>
+        <FormItem label='发货类型'>
+          <Select v-model="orderForm.sendType" style="width: 100px;">
+              <Option v-for="item in orderForm.sendTypeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
+          </Select>
+        </FormItem>
+        <FormItem style="margin-left: -50px;">
+          <Button type="primary" icon="ios-search">搜索</Button>
         </FormItem>
       </Form>
       <Table border :columns="orderColumns" :data="orderData"></Table>
+      <Page :total="40" size="small" show-elevator show-sizer style="margin-top: 20px;"></Page>
     </div>
 </template>
 <script>
     export default {
       data() {
         return {
+          model1: -1,
           orderForm: {
-            value: ''
+            orderId: '',
+            beginTime: '',
+            endTime: '',
+            sendType: -1,
+            sendTypeList: [
+              {
+                name: '未发货',
+                value: 0
+              },
+              {
+                name: '已发货',
+                value: 1
+              },
+              {
+                name: '全部',
+                value: -1
+              }
+            ]
           },
           orderColumns: [
             {
@@ -75,29 +101,29 @@
               render: (h, params) => {
                 return h('div', [
                   h('Button', {
-                      props: {
-                          type: 'primary',
-                          size: 'small'
-                      },
-                      style: {
-                          marginRight: '5px'
-                      },
-                      on: {
-                          click: () => {
-                              this.show(params.index)
-                          }
+                    props: {
+                      type: 'primary',
+                      size: 'small'
+                    },
+                    style: {
+                      marginRight: '5px'
+                    },
+                    on: {
+                      click: () => {
+                        this.show(params.index)
                       }
+                    }
                   }, '查看'),
                   h('Button', {
-                      props: {
-                          type: 'error',
-                          size: 'small'
-                      },
-                      on: {
-                          click: () => {
-                              this.remove(params.index)
-                          }
+                    props: {
+                      type: 'error',
+                      size: 'small'
+                    },
+                    on: {
+                      click: () => {
+                        this.remove(params.index)
                       }
+                    }
                   }, '删除')
                 ]);
               }

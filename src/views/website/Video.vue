@@ -3,24 +3,16 @@
 </style>
 <template>
     <div class="index">
-      <Form :model="orderForm" label-position='right' :label-width='60' inline>
+      <Form :model="orderForm" :label-width="80" label-position="left">
         <FormItem label='订单号'>
-          <Input v-model="orderForm.orderId" placeholder="请输入订单号"></Input>
-        </FormItem>
-        <FormItem label='开始时间'>
-          <DatePicker v-model="orderForm.beginTime" type="date" placeholder="订单开始时间"></DatePicker>
-        </FormItem>
-        <FormItem label='结束时间'>
-          <DatePicker v-model="orderForm.endTime" type="date" placeholder="订单结束时间"></DatePicker>
-        </FormItem>
-        <FormItem label='发货类型'>
-          <Select v-model="orderForm.sendType" style="width: 100px;">
-              <Option v-for="item in orderForm.sendTypeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
-          </Select>
-        </FormItem>
-        <FormItem style="margin-left: -50px;">
-          <Button type="primary" icon="ios-search">搜索</Button>
-          <Button type="primary" icon="ios-search" style="margin-left: 10px;">导出</Button>
+          <Row type="flex" justify="start" align="middle" :gutter="16">
+            <Col span="6">
+              <Input v-model="orderForm.value" placeholder="请输入订单号"></Input>
+            </Col>
+            <Col span="6">
+              <Button type="primary" icon="ios-search">搜索</Button>
+            </Col>
+          </Row>
         </FormItem>
       </Form>
       <Table border :columns="orderColumns" :data="orderData"></Table>
@@ -30,26 +22,8 @@
     export default {
       data() {
         return {
-          model1: -1,
           orderForm: {
-            orderId: '',
-            beginTime: '',
-            endTime: '',
-            sendType: -1,
-            sendTypeList: [
-              {
-                name: '未发货',
-                value: 0
-              },
-              {
-                name: '已发货',
-                value: 1
-              },
-              {
-                name: '全部',
-                value: -1
-              }
-            ]
+            value: ''
           },
           orderColumns: [
             {
