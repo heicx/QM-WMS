@@ -1,5 +1,6 @@
 import OrderSearch from './views/order/OrderSearch.vue'
 import OrderExport from './views/order/OrderExport.vue'
+import OrderImport from './views/order/OrderImport.vue'
 
 import AccountCreate from './views/account/AccountCreate.vue'
 import AccountUpdate from './views/account/AccountUpdate.vue'
@@ -32,6 +33,13 @@ const routers = [
             title: '订单导出'
         },
         component: OrderExport
+    },
+    {
+        path: '/order/import',
+        meta: {
+            title: '订单导入'
+        },
+        component: OrderImport
     },
     {
         path: '/account/create',

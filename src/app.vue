@@ -84,6 +84,9 @@
                         <MenuItem name="2-2">
                             <router-link to="/order/export" tag="div">订单导出</router-link>
                         </MenuItem>
+                        <MenuItem name="2-3">
+                            <router-link to="/order/import" tag="div">订单导入</router-link>
+                        </MenuItem>
                     </Submenu>
                     <Submenu name="3">
                         <template slot="title">
@@ -105,9 +108,9 @@
                         <MenuItem name="4-2">
                             <router-link to="/web/video" tag="div">视频编辑</router-link>
                         </MenuItem>
-                        <MenuItem name="4-3">
+                        <!-- <MenuItem name="4-3">
                             <router-link to="/web/comment" tag="div">用户评价</router-link>
-                        </MenuItem>
+                        </MenuItem> -->
                     </Submenu>
                 </Menu>
             </Col>

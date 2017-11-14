@@ -3,69 +3,39 @@
 </style>
 <template>
     <div class="index">
-      <Form :model="orderForm" :label-width="80" label-position="left">
-        <FormItem label='订单号'>
-          <Row type="flex" justify="start" align="middle" :gutter="16">
-            <Col span="6">
-              <Input v-model="orderForm.value" placeholder="请输入订单号"></Input>
-            </Col>
-            <Col span="6">
-              <Button type="primary" icon="ios-search">搜索</Button>
-            </Col>
-          </Row>
+      <Form :model="videoForm" label-position='right' :label-width='70' inline>
+        <FormItem label='创建时间'>
+          <DatePicker v-model="videoForm.endTime" type="date" placeholder="请输入创建时间"></DatePicker>
+        </FormItem>
+        <FormItem label='截止时间'>
+          <DatePicker v-model="videoForm.endTime" type="date" placeholder="请输入截止时间"></DatePicker>
+        </FormItem>
+        <FormItem style="margin-left: -50px;">
+          <Button type="primary" icon="ios-search">搜索</Button>
         </FormItem>
       </Form>
-      <Table border :columns="orderColumns" :data="orderData"></Table>
+      <Table border :columns="newsColumns" :data="newsData"></Table>
     </div>
 </template>
 <script>
     export default {
       data() {
         return {
-          orderForm: {
-            value: ''
+          videoForm: {
+            title: '',
+            beginTime: '',
+            endTime: ''
           },
-          orderColumns: [
+          newsColumns: [
             {
-              title: '订单号',
-              width: 140,
+              title: '默认图',
               align: 'center',
-              key: 'orderId'
+              key: 'image'
             },
             {
-              title: '用户名',
+              title: '更新时间',
               align: 'center',
-              key: 'userName'
-            },
-            {
-              title: '联系方式',
-              align: 'center',
-              key: 'telphone'
-            },
-            {
-              title: '收货地址',
-              align: 'center',
-              key: 'address'
-            },
-            {
-              title: '商品名称',
-              align: 'center',
-              key: 'goodsName'
-            },
-            {
-              title: '商品价格',
-              align: 'center',
-              key: 'price'
-            },
-            {
-              title: '订单状态',
-              align: 'center',
-              key: 'status'
-            },
-            {
-              title: '下单时间',
-              align: 'center',
-              key: 'createTime'
+              key: 'updateTime'
             },
             {
               title: '操作',
@@ -75,44 +45,41 @@
               render: (h, params) => {
                 return h('div', [
                   h('Button', {
-                      props: {
-                          type: 'primary',
-                          size: 'small'
-                      },
-                      style: {
-                          marginRight: '5px'
-                      },
-                      on: {
-                          click: () => {
-                              this.show(params.index)
-                          }
+                    props: {
+                      type: 'primary',
+                      size: 'small'
+                    },
+                    style: {
+                      marginRight: '5px'
+                    },
+                    on: {
+                      click: () => {
+                        this.show(params.index)
                       }
-                  }, '查看'),
+                    }
+                  }, '编辑'),
                   h('Button', {
-                      props: {
-                          type: 'error',
-                          size: 'small'
-                      },
-                      on: {
-                          click: () => {
-                              this.remove(params.index)
-                          }
+                    props: {
+                      type: 'error',
+                      size: 'small'
+                    },
+                    on: {
+                      click: () => {
+                        this.remove(params.index)
                       }
+                    }
                   }, '删除')
                 ]);
               }
             }
           ],
-          orderData: [
+          newsData: [
             {
-              orderId: 'CX0007008120198',
-              userName: 'heicx_sudo',
-              telphone: '139****9908',
-              address: '北京市朝阳区望京北路 1 号',
-              goodsName: '滑步车',
-              price: 1799,
-              status: 1,
-              createTime: '2017-10-10'
+              title: '新闻标题',
+              subTitle: '新闻副标题',
+              author: 'heicx',
+              status: '未发布',
+              updateTime: '2017-10-10'
             }
           ]
         }

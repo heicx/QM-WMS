@@ -24,6 +24,7 @@
         </FormItem>
       </Form>
       <Table border :columns="orderColumns" :data="orderData"></Table>
+      <Page :total="40" size="small" show-elevator show-sizer style="margin-top: 20px;"></Page>
     </div>
 </template>
 <script>
