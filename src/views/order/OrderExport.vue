@@ -1,8 +1,13 @@
 <style scoped lang="less">
-
+.export-btns {
+  margin-left: -50px;
+  .export-download-btn {
+    margin-left: 10px;
+  }
+}
 </style>
 <template>
-    <div class="index">
+    <div class="order-export-wrapper">
       <Form :model="orderForm" label-position='right' :label-width='60' inline>
         <FormItem label='订单号'>
           <Input v-model="orderForm.orderId" placeholder="请输入订单号"></Input>
@@ -13,14 +18,9 @@
         <FormItem label='结束时间'>
           <DatePicker v-model="orderForm.endTime" type="date" placeholder="订单结束时间"></DatePicker>
         </FormItem>
-        <FormItem label='发货类型'>
-          <Select v-model="orderForm.sendType" style="width: 100px;">
-              <Option v-for="item in orderForm.sendTypeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
-          </Select>
-        </FormItem>
-        <FormItem style="margin-left: -50px;">
+        <FormItem class="export-btns">
           <Button type="primary" icon="ios-search">搜索</Button>
-          <Button type="primary" icon="ios-search" style="margin-left: 10px;">导出</Button>
+          <Button type="primary" class="export-download-btn" icon="ios-cloud-download-outline">导出</Button>
         </FormItem>
       </Form>
       <Table border :columns="orderColumns" :data="orderData"></Table>
@@ -35,22 +35,7 @@
           orderForm: {
             orderId: '',
             beginTime: '',
-            endTime: '',
-            sendType: -1,
-            sendTypeList: [
-              {
-                name: '未发货',
-                value: 0
-              },
-              {
-                name: '已发货',
-                value: 1
-              },
-              {
-                name: '全部',
-                value: -1
-              }
-            ]
+            endTime: ''
           },
           orderColumns: [
             {
@@ -60,7 +45,7 @@
               key: 'orderId'
             },
             {
-              title: '用户名',
+              title: '收件人',
               align: 'center',
               key: 'userName'
             },
@@ -75,6 +60,11 @@
               key: 'address'
             },
             {
+              title: '邮编',
+              align: 'center',
+              key: 'zipCode'
+            },
+            {
               title: '商品名称',
               align: 'center',
               key: 'goodsName'
@@ -87,58 +77,30 @@
             {
               title: '订单状态',
               align: 'center',
-              key: 'status'
+              key: 'payType'
+            },
+            {
+              title: '发货状态',
+              align: 'center',
+              key: 'sendType'
             },
             {
               title: '下单时间',
               align: 'center',
               key: 'createTime'
-            },
-            {
-              title: '操作',
-              key: 'action',
-              width: 150,
-              align: 'center',
-              render: (h, params) => {
-                return h('div', [
-                  h('Button', {
-                      props: {
-                          type: 'primary',
-                          size: 'small'
-                      },
-                      style: {
-                          marginRight: '5px'
-                      },
-                      on: {
-                          click: () => {
-                              this.show(params.index)
-                          }
-                      }
-                  }, '查看'),
-                  h('Button', {
-                      props: {
-                          type: 'error',
-                          size: 'small'
-                      },
-                      on: {
-                          click: () => {
-                              this.remove(params.index)
-                          }
-                      }
-                  }, '删除')
-                ]);
-              }
             }
           ],
           orderData: [
             {
               orderId: 'CX0007008120198',
-              userName: 'heicx_sudo',
+              userName: '陈敏',
               telphone: '139****9908',
               address: '北京市朝阳区望京北路 1 号',
+              zipCode: '1000010',
               goodsName: '滑步车',
               price: 1799,
-              status: 1,
+              payType: '已付款',
+              sendType: '未发货',
               createTime: '2017-10-10'
             }
           ]

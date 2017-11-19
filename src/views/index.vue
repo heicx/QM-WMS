@@ -3,11 +3,18 @@
   min-height: 650px;
   text-align: center;
 }
+
+.index-bg-banner {
+  width: 50%;
+  opacity: .8;
+}
 </style>
 <template>
     <div class="index">
       <Row type="flex" justify="center" align='middle' class="index-wrap">
-        <Col span="24">欢迎</Col>
+        <Col span="24">
+          <img class='index-bg-banner' src="../images/home-background-img.jpg">
+        </Col>
       </Row>
     </div>
 </template>
@@ -15,99 +22,6 @@
     export default {
       data() {
         return {
-          orderForm: {
-            value: ''
-          },
-          orderColumns: [
-            {
-              title: '订单号',
-              width: 140,
-              align: 'center',
-              key: 'orderId'
-            },
-            {
-              title: '用户名',
-              align: 'center',
-              key: 'userName'
-            },
-            {
-              title: '联系方式',
-              align: 'center',
-              key: 'telphone'
-            },
-            {
-              title: '收货地址',
-              align: 'center',
-              key: 'address'
-            },
-            {
-              title: '商品名称',
-              align: 'center',
-              key: 'goodsName'
-            },
-            {
-              title: '商品价格',
-              align: 'center',
-              key: 'price'
-            },
-            {
-              title: '订单状态',
-              align: 'center',
-              key: 'status'
-            },
-            {
-              title: '下单时间',
-              align: 'center',
-              key: 'createTime'
-            },
-            {
-              title: '操作',
-              key: 'action',
-              width: 150,
-              align: 'center',
-              render: (h, params) => {
-                return h('div', [
-                  h('Button', {
-                      props: {
-                          type: 'primary',
-                          size: 'small'
-                      },
-                      style: {
-                          marginRight: '5px'
-                      },
-                      on: {
-                          click: () => {
-                              this.show(params.index)
-                          }
-                      }
-                  }, '查看'),
-                  h('Button', {
-                      props: {
-                          type: 'error',
-                          size: 'small'
-                      },
-                      on: {
-                          click: () => {
-                              this.remove(params.index)
-                          }
-                      }
-                  }, '删除')
-                ]);
-              }
-            }
-          ],
-          orderData: [
-            {
-              orderId: 'CX0007008120198',
-              userName: 'heicx_sudo',
-              telphone: '139****9908',
-              address: '北京市朝阳区望京北路 1 号',
-              goodsName: '滑步车',
-              price: 1799,
-              status: 1,
-              createTime: '2017-10-10'
-            }
-          ]
         }
       }
     }

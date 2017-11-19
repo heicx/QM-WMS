@@ -13,6 +13,11 @@
         <FormItem label='结束时间'>
           <DatePicker v-model="orderForm.endTime" type="date" placeholder="订单结束时间"></DatePicker>
         </FormItem>
+        <FormItem label='订单状态'>
+          <Select v-model="orderForm.payType" style="width: 100px;">
+              <Option v-for="item in orderForm.payTypeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
+          </Select>
+        </FormItem>
         <FormItem label='发货类型'>
           <Select v-model="orderForm.sendType" style="width: 100px;">
               <Option v-for="item in orderForm.sendTypeList" :value="item.value" :key="item.value">{{ item.name }}</Option>
@@ -30,12 +35,30 @@
     export default {
       data() {
         return {
-          model1: -1,
           orderForm: {
             orderId: '',
             beginTime: '',
             endTime: '',
+            payType: -1,
             sendType: -1,
+            payTypeList: [
+              {
+                name: '未支付',
+                value: 0
+              },
+              {
+                name: '已支付',
+                value: 1
+              },
+              {
+                name: '已退款',
+                value: 2
+              },
+              {
+                name: '全部',
+                value: -1
+              }
+            ],
             sendTypeList: [
               {
                 name: '未发货',
@@ -57,6 +80,18 @@
               width: 140,
               align: 'center',
               key: 'orderId'
+            },
+            {
+              title: '物流单号',
+              width: 140,
+              align: 'center',
+              key: 'expressId'
+            },
+            {
+              title: '配送方',
+              width: 140,
+              align: 'center',
+              key: 'expressName'
             },
             {
               title: '用户名',
@@ -92,52 +127,31 @@
               title: '下单时间',
               align: 'center',
               key: 'createTime'
-            },
-            {
-              title: '操作',
-              key: 'action',
-              width: 150,
-              align: 'center',
-              render: (h, params) => {
-                return h('div', [
-                  h('Button', {
-                    props: {
-                      type: 'primary',
-                      size: 'small'
-                    },
-                    style: {
-                      marginRight: '5px'
-                    },
-                    on: {
-                      click: () => {
-                        this.show(params.index)
-                      }
-                    }
-                  }, '查看'),
-                  h('Button', {
-                    props: {
-                      type: 'error',
-                      size: 'small'
-                    },
-                    on: {
-                      click: () => {
-                        this.remove(params.index)
-                      }
-                    }
-                  }, '删除')
-                ]);
-              }
             }
           ],
           orderData: [
             {
               orderId: 'CX0007008120198',
+              expressId: '23009766431',
+              expressName: '顺丰快递',
               userName: 'heicx_sudo',
               telphone: '139****9908',
               address: '北京市朝阳区望京北路 1 号',
               goodsName: '滑步车',
               price: 1799,
-              status: 1,
+              status: '已付款',
+              createTime: '2017-10-10'
+            },
+            {
+              orderId: 'CX0007008120197',
+              expressId: '暂无',
+              expressName: '暂无',
+              userName: 'heicx_sudo',
+              telphone: '139****9908',
+              address: '北京市朝阳区望京北路 1 号',
+              goodsName: '滑步车',
+              price: 1799,
+              status: '未付款',
               createTime: '2017-10-10'
             }
           ]
