@@ -16,6 +16,14 @@ import Main from './views/main.vue';
 
 const routers = [
     {
+        path: '/login',
+        name: 'login',
+        meta: {
+            title: 'Login - 登录'
+        },
+        component: resolve => { require(['./views/Login.vue'], resolve); }
+    },
+    {
         path: '/',
         name: 'otherRouter',
         component: Main,
@@ -105,14 +113,6 @@ const routers = [
                 component: (resolve) => require(['./views/index.vue'], resolve)
             }
         ]
-    },
-    {
-        path: '/login',
-        name: 'login',
-        meta: {
-            title: 'Login - 登录'
-        },
-        component: resolve => { require(['./views/Login.vue'], resolve); }
     }
 ];
 

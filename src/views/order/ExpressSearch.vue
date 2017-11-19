@@ -71,7 +71,7 @@
               key: 'expressId'
             },
             {
-              title: '配方方',
+              title: '配送方',
               width: 140,
               align: 'center',
               key: 'expressName'
