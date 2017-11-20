@@ -19,7 +19,7 @@ const routers = [
         path: '/login',
         name: 'login',
         meta: {
-            title: 'Login - 登录'
+            title: 'QMY - 登录'
         },
         component: resolve => { require(['./views/Login.vue'], resolve); }
     },
@@ -31,7 +31,7 @@ const routers = [
             {
                 path: '/home',
                 meta: {
-                    title: '首页'
+                    title: 'QMY'
                 },
                 component: (resolve) => require(['./views/index.vue'], resolve)
             },
@@ -108,7 +108,7 @@ const routers = [
             {
                 path: '/*',
                 meta: {
-                    title: '首页'
+                    title: 'QMY'
                 },
                 component: (resolve) => require(['./views/index.vue'], resolve)
             }

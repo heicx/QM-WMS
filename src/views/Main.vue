@@ -70,6 +70,9 @@
                             <router-link to="/account/create" tag="div">创建账户</router-link>
                         </MenuItem>
                         <MenuItem name="1-2">
+                            <router-link to="/account/search" tag="div">账户查询</router-link>
+                        </MenuItem>
+                        <MenuItem name="1-3">
                             <router-link to="/account/update" tag="div" name="1-1">修改密码</router-link>
                         </MenuItem>
                     </Submenu>
