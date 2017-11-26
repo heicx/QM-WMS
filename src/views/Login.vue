@@ -52,7 +52,18 @@ export default {
     },
     methods: {
         handleSubmit () {
-            console.log(this.$vue)
+            if(this.form.userName !== '' && this.form.password !== '') {
+                this.$store.dispatch('login', {
+                    name: this.form.userName,
+                    password: this.form.password
+                }).then(res => {
+                    if(!res.status) {
+                        this.$Message.error(res.errMsg);
+                    }else {
+                        this.$router.replace({ path: '/order/search' });
+                    }
+                });
+            }
         }
     }
 };

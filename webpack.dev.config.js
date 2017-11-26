@@ -31,5 +31,8 @@ module.exports = merge(webpackBaseConfig, {
             template: './src/template/index.ejs',
             inject: false
         })
-    ]
+    ],
+    devServer: {
+        disableHostCheck: true
+      }
 });

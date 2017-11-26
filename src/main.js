@@ -6,6 +6,8 @@ import store from './store';
 import Util from './libs/util';
 import App from './app.vue';
 
+import API from './libs/request';
+
 import 'iview/dist/styles/iview.css';
 
 Vue.use(VueRouter);
@@ -20,6 +22,18 @@ const router = new VueRouter(RouterConfig);
 
 router.beforeEach((to, from, next) => {
     iView.LoadingBar.start();
+    store.dispatch('isLogin').then(res => {
+        if(!res.status) {
+            if(to.name !== 'login') {
+                router.replace({ path: '/login' });
+            }
+        }else {
+            if(to.name === 'login') {
+                router.replace({ path: '/order/search' });
+            }
+        }
+    });
+
     Util.title(to.meta.title);
     next();
 });

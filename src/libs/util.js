@@ -1,8 +1,7 @@
-let util = {
+let util = {};
 
-};
 util.title = function (title) {
-    title = title ? title + ' - Home' : 'iView project';
+    title = title ? title + ' - QMY' : '轻麦科技 - QMY';
     window.document.title = title;
 };
 

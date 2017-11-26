@@ -5,6 +5,7 @@ import ExpressSearch from './views/order/ExpressSearch.vue'
 
 import AccountCreate from './views/account/AccountCreate.vue'
 import AccountUpdate from './views/account/AccountUpdate.vue'
+import AccountSearch from './views/account/AccountSearch.vue'
 
 import UserSearch from './views/user/UserSearch.vue'
 
@@ -76,6 +77,13 @@ const routers = [
                     title: '修改账户'
                 },
                 component: AccountUpdate
+            },
+            {
+                path: '/account/search',
+                meta: {
+                    title: '账户查询'
+                },
+                component: AccountSearch
             },
             {
                 path: '/user/search',
