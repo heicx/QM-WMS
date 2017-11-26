@@ -8,6 +8,7 @@ import * as mutations from './mutations'
 Vue.use(Vuex)
 
 const state = {
+    errMsg: null,
     isLogin: false,
     adminUser: {},
     userList: []
