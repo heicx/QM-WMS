@@ -58,7 +58,11 @@ export default {
     },
     methods: {
         searchUsers () {
-            this.$store.commit('searchUsers', this.$store.getters.searchUsers(this.userForm.userName))
+            if(this.userForm.userName === '') {
+                this.$store.commit('searchUsers');    
+            }else {
+                this.$store.commit('searchUsers', this.userForm.userName);
+            }
         }
     }
 }

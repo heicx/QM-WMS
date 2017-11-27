@@ -11,7 +11,8 @@ const state = {
     errMsg: null,
     isLogin: false,
     adminUser: {},
-    userList: []
+    userList: [],
+    userSearchList: []
 };
 
 export default new Vuex.Store({

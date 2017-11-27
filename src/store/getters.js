@@ -1,6 +1,6 @@
 // 用户列表
 export const userList = state => {
-    return state.userList.map(user => {
+    return state.userSearchList.map(user => {
         if(user.roleId == 2) {
             user.roleName = '管理员';
         }
@@ -14,6 +14,10 @@ export const userList = state => {
         return user;
     });
 }
+
+export const getUsers = state => (name) => {
+    return state.userSearchList;
+}  
 
 // 查找用户
 export const searchUsers = state => (name) => {
