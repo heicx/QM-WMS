@@ -22,4 +22,8 @@ export const getUsers = state => (name) => {
 // 查找用户
 export const searchUsers = state => (name) => {
     return state.userList.filter(user => user.userName == name);
-}    
+}
+
+export const getAdminUser = state => {
+    return state.adminUser;
+}
