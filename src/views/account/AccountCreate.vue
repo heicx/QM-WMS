@@ -19,12 +19,12 @@
     export default {
         data () {
           return {
-              accountForm: {
+            accountForm: {
                 name: '',
                 password: '',
                 rePassword: ''
-              },
-              rules: {
+            },
+            rules: {
                 name: [
                     { required: true, message: '账号不能为空', trigger: 'blur' }
                 ],
